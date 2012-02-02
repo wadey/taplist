@@ -11,12 +11,11 @@ class MonkskettleSpider(CrawlSpider):
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
         beers = hxs.select("//div[preceding-sibling::div[2]/p/span = 'Draught Beers']/p[@class='USE-FOR-ALL-BEER']")
-        #beers = hxs.select("//p[@class='USE-FOR-ALL-BEER']/span[@class='char-style-override-3']")
         items = []
         for beer in beers:
-            i = TaplistItem()
             parts = ' '.join(beer.select('span/text()').extract()).replace('\t', ' - ')
             if parts and len(parts):
+                i = TaplistItem()
                 i['name'] = parts
                 items.append(i)
         items.sort(key=lambda e: e['name'])
