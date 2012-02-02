@@ -16,4 +16,5 @@ class CitybeerstoreSpider(CrawlSpider):
             i = TaplistItem()
             i['name'] = beer.select('text()').extract()
             items.append(i)
+        items.sort(key=lambda e: e['name'])
         return items

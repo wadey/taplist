@@ -19,4 +19,5 @@ class MonkskettleSpider(CrawlSpider):
             if parts and len(parts):
                 i['name'] = parts
                 items.append(i)
+        items.sort(key=lambda e: e['name'])
         return items
