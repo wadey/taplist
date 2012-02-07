@@ -1,6 +1,6 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 
-date
+echo " -- Starting run: `date`"
 
 ROOT=`dirname "$0"`
 cd "$ROOT"
@@ -8,11 +8,12 @@ cd "$ROOT"
 source bin/activate
 
 go() {
+    echo " - $1"
     [ -f data/current/$1 ] && mv data/current/$1 data/last/$1
-    scrapy crawl $1 -o data/current/$1 -t json
-    [ -f data/last/$1 ] && python compare.py data/last/$1 data/current/$1 "$2"
+    scrapy crawl $1 -o data/current/$1 -t json && \
+        [ -f data/last/$1 ] && \
+        python compare.py data/last/$1 data/current/$1 "$2"
 }
 
 go citybeerstore "@citybeerstore"
-
-deactivate
+go monkskettle "@monkskettle"
