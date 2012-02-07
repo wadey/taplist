@@ -3,33 +3,40 @@ import sys
 
 from twitter import Twitter, OAuth
 
-import settings
+try:
+    import settings
+except:
+    settings = None
 
-twitter = Twitter(
-          auth=OAuth(
-              settings.TOKEN,
-              settings.TOKEN_KEY,
-              settings.CON_SECRET,
-              settings.CON_SECRET_KEY))
+twitter = None
+if settings:
+    twitter = Twitter(
+              auth=OAuth(
+                  settings.TOKEN,
+                  settings.TOKEN_KEY,
+                  settings.CON_SECRET,
+                  settings.CON_SECRET_KEY))
 
-old = None
-current = None
+def load(name):
+    with open(name) as f:
+        return set([e['name'] for e in json.load(f)])
 
-with open(sys.argv[1]) as f:
-    old = set([e['name'] for e in json.load(f)])
-
-with open(sys.argv[2]) as f:
-    current = set([e['name'] for e in json.load(f)])
-
+old = load(sys.argv[1])
+current = load(sys.argv[2])
 brewery = sys.argv[3]
 
-if old and current:
+if not old:
+    print "error, no last data"
+elif not current:
+    print "error, no current data"
+else:
     new = current - old
 
     if new:
         for beer in new:
             msg = "New beer at %s: %s" % (brewery, beer)
-            twitter.statuses.update(status=msg)
+            if twitter:
+                twitter.statuses.update(status=msg)
             print msg
     else:
         print 'nothing new'

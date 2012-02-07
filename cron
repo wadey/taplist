@@ -1,15 +1,18 @@
 #!/bin/sh -ex
 
+date
+
 ROOT=`dirname "$0"`
+cd "$ROOT"
+
+source bin/activate
 
 go() {
-    mv data/current/$1 data/last/$1
+    [ -f data/current/$1 ] && mv data/current/$1 data/last/$1
     scrapy crawl $1 -o data/current/$1 -t json
-    python compare.py data/last/$1 data/current/$1 "$2"
+    [ -f data/last/$1 ] && python compare.py data/last/$1 data/current/$1 "$2"
 }
-
-lockfile $ROOT/lock
 
 go citybeerstore "@citybeerstore"
 
-rm -f $ROOT/lock
+deactivate
