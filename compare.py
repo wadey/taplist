@@ -1,5 +1,6 @@
 import json
 import sys
+import time
 
 from twitter import Twitter, OAuth
 
@@ -38,7 +39,12 @@ else:
             if beer:
                 msg = "New beer at %s: %s" % (brewery, beer)
                 if twitter:
-                    twitter.statuses.update(status=msg)
+                    try:
+                        twitter.statuses.update(status=msg)
+                    except:
+                        time.sleep(5)
+                        twitter.statuses.update(status=msg)
+                    time.sleep(5)
                 print repr(msg)
     else:
         print 'nothing new'
