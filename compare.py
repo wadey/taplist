@@ -34,9 +34,11 @@ else:
 
     if new:
         for beer in new:
-            msg = "New beer at %s: %s" % (brewery, beer)
-            if twitter:
-                twitter.statuses.update(status=msg)
-            print msg
+            beer = beer.strip()
+            if beer:
+                msg = "New beer at %s: %s" % (brewery, beer)
+                if twitter:
+                    twitter.statuses.update(status=msg)
+                print repr(msg)
     else:
         print 'nothing new'
