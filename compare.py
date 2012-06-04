@@ -3,11 +3,15 @@ import sys
 import time
 
 from twitter import Twitter, OAuth
+import beanstalkc
 
 try:
     import settings
 except:
     settings = None
+
+beanstalk = beanstalkc.Connection(host='localhost', port=11300)
+beanstalk.use('twitter')
 
 twitter = None
 if settings:
@@ -38,13 +42,7 @@ else:
             beer = beer.strip()
             if beer:
                 msg = "New beer at %s: %s" % (brewery, beer)
-                if twitter:
-                    try:
-                        twitter.statuses.update(status=msg)
-                    except:
-                        time.sleep(5)
-                        twitter.statuses.update(status=msg)
-                    time.sleep(5)
+                beanstalk.put(json.dumps(dict(msg=msg)))
                 print repr(msg)
     else:
         print 'nothing new'
