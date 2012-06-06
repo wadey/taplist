@@ -18,3 +18,4 @@ go() {
 
 go citybeerstore "@citybeerstore"
 go monkskettle "@monkskettle"
+go 21stamendment "@21stAmendment"
