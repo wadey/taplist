@@ -12,7 +12,7 @@ class ZeitgeistSpider(CrawlSpider):
 
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
-        beers = hxs.select("//div[@id='content']/p")
+        beers = hxs.select("//div[@id='main_column']/div[@id='content']/p")
         items = []
         for beer in beers:
             i = TaplistItem()
