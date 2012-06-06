@@ -20,11 +20,14 @@ while True:
     job = beanstalk.reserve()
     try:
         body = json.loads(job.body)
+        msg = body['msg']
 
-        twitter.statuses.update(status=body.msg)
+        twitter.statuses.update(status=msg)
         job.delete()
+        job = None
         print "%s: %s" % (time.time(), repr(msg))
         time.sleep(5)
     except Exception as e:
         print e
-        job.release()
+        if job is not None:
+            job.release()
