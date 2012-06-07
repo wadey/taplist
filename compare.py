@@ -2,7 +2,6 @@ import json
 import sys
 import time
 
-from twitter import Twitter, OAuth
 import beanstalkc
 
 try:
@@ -12,15 +11,6 @@ except:
 
 beanstalk = beanstalkc.Connection(host='localhost', port=11300)
 beanstalk.use('twitter')
-
-twitter = None
-if settings:
-    twitter = Twitter(
-              auth=OAuth(
-                  settings.TOKEN,
-                  settings.TOKEN_KEY,
-                  settings.CON_SECRET,
-                  settings.CON_SECRET_KEY))
 
 def load(name):
     with open(name) as f:
