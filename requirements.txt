@@ -1,0 +1,3 @@
+Scrapy==0.14.4
+beanstalkc==0.2.0
+twitter==1.9.1
