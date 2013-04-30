@@ -12,8 +12,9 @@ go() {
     [ -f data/current/$1 ] && mv data/current/$1 data/last/$1
     if scrapy crawl $1 -o data/current/$1 -t json; then
         if python -mjson.tool data/current/$1 >/dev/null; then
-            [ -f data/last/$1 ] && \
-            python compare.py data/last/$1 data/current/$1 "$2"
+            if [ -f data/last/$1 ]; then
+                python compare.py data/last/$1 data/current/$1 "$2"
+            fi
         else
             rm data/current/$1
         fi
@@ -23,4 +24,4 @@ go() {
 go citybeerstore "@citybeerstore"
 go monkskettle "@monkskettle"
 go 21stamendment "@21stAmendment"
-go zeitgeist "Zeitgeist"
+go zeitgeist "@zeitgeistsf"
