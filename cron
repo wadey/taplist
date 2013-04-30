@@ -5,7 +5,7 @@ echo " -- Starting run: `date`"
 ROOT=`dirname "$0"`
 cd "$ROOT"
 
-source bin/activate
+. bin/activate
 
 go() {
     echo " - $1"
