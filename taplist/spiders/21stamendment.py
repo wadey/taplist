@@ -16,10 +16,7 @@ class t21stamendmentSpider(CrawlSpider):
         items = []
         for beer in beers:
             i = TaplistItem()
-            parts = beer.select('text()').extract()
-            parts = map(lambda s: s.strip(), parts)
-            parts[0] = parts[0] + ":"
-            i['name'] = ' '.join(parts)
+            i['name'] = ' '.join(beer.select('text()').extract())
             items.append(i)
         items.sort(key=lambda e: e['name'])
         return items
