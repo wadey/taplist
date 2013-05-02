@@ -9,7 +9,9 @@ cd "$ROOT"
 
 go() {
     echo " - $1"
-    [ -f data/current/$1 ] && mv data/current/$1 data/last/$1
+    if [ -f data/current/$1 ]; then
+        mv data/current/$1 data/last/$1
+    fi
     if scrapy crawl $1 -o data/current/$1 -t json; then
         if python -mjson.tool data/current/$1 >/dev/null; then
             if [ -f data/last/$1 ]; then
