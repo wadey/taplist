@@ -16,6 +16,8 @@ twitter = Twitter(
               settings.CON_SECRET,
               settings.CON_SECRET_KEY))
 
+print "tweeter started"
+
 while True:
     job = beanstalk.reserve()
     try:
