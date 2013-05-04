@@ -12,11 +12,15 @@ class t21stamendmentSpider(CrawlSpider):
 
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
-        beers = hxs.select("//section[@id='beers-on-tap']/dl/dt")
+        beers = hxs.select("//section[@id='beers-on-tap']/dl")
+        names = beers.select("//dt")
+        types = beers.select("//dd[@class='ontap-type']")
+        abvs = beers.select("//dd[@class='ontap-abv']")
+        full = zip(names, types, abvs)
         items = []
-        for beer in beers:
+        for beer in full:
             i = TaplistItem()
-            i['name'] = ' '.join(beer.select('text()').extract())
+            i['name'] = ' - '.join([' '.join(part.select('text()').extract()) for part in beer])
             items.append(i)
         items.sort(key=lambda e: e['name'])
         return items

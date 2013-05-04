@@ -4,13 +4,14 @@ from responses import fake_response_from_file
 
 class t21stamendmentSpiderTest(unittest.TestCase):
     expected = [
-            u'5-South Pale Ale',
-            u'Amber Waves', u"Farmer's Daughter",
-            u'Gigantes IPA',
-            u'Hell or High Watermelon Wheat',
-            u'Heroine IPA (Guest)',
-            u'Imperial Jack',
-            u'South Park Blonde'
+            u'5-South Pale Ale - American Pale Ale - 5.5%',
+            u'Amber Waves - American Amber - 5.8%',
+            u"Farmer's Daughter - Biere de Garde - 5.6%",
+            u'Gigantes IPA - American IPA - 6.8%',
+            u'Hell or High Watermelon Wheat - Summer on your palate - 4.9%',
+            u'Heroine IPA (Guest) - American IPA - 7.2%',
+            u'Imperial Jack - Imperial ESB - 8.3%',
+            u'South Park Blonde - Blonde Ale - 5.1%'
     ]
 
     def setUp(self):
