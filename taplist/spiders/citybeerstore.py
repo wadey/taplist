@@ -5,16 +5,17 @@ from taplist.items import TaplistItem
 
 class CitybeerstoreSpider(CrawlSpider):
     name = 'citybeerstore'
-    allowed_domains = ['www.citybeerstore.com']
-    start_urls = ['http://www.citybeerstore.com/beer-store/menu']
+    allowed_domains = ['citybeerstore.com']
+    start_urls = ['http://citybeerstore.com/our-menu/']
 
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
-        beers = hxs.select("//ul[@class='beerlist']/li")
+        beers = hxs.select("//div[@id='content']/p")
         items = []
         for beer in beers:
             i = TaplistItem()
-            i['name'] = ' '.join(beer.select('text()').extract())
-            items.append(i)
+            i['name'] = ' '.join(beer.select('text()').extract()).strip()
+            if i['name']:
+                items.append(i)
         items.sort(key=lambda e: e['name'])
         return items

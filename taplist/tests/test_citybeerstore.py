@@ -4,21 +4,22 @@ from responses import fake_response_from_file
 
 class CitybeerstoreSpiderTest(unittest.TestCase):
     expected = [
-            u'AleSmith "Horny Devil"',
-            u'Bavik "Monk\'s Cafe" Sour Red',
-            u'Brasserie Dubuisson "Cuvee des Trolls"',
-            u'Brasserie Dupont "Monk\'s Stout"',
-            u'Brouwerij Verhaeghe "Duchesse De Bourgogne" Flemish Sour Ale',
-            u'Deschutes "Chainbreaker"',
-            u'Golden Road "Berliner Weiss"',
-            u'Golden Road "It\'s Not Always Sunny in LA"',
-            u'Golden Road "Point the Way" IPA',
-            u'Golden Road "Wolf Among Weeds" DIPA',
-            u'Lagunitas "Waldos\' 420 Mystery Beer"',
-            u'Marin and CBS "Platypus, Batch 2" Imperial Stout',
-            u'Petus "Sour Pale Ale"',
-            u'Russian River "Row 2 Hill 56"',
-            u'Stillwater "Folklore" Stout'
+            u'AleSmith Brewing Company, IPA',
+            u'Berryessa Brewing Company, Double Tap-Double IPA',
+            u'Birra Amiata, Marruca-Pale Honey Ale',
+            u'Drakes Brewing Company, Blue Bottle Stout',
+            u'Golden Road Brewing Company, Berlinerweisse-with lemon peel',
+            u'Headlands Brewing Company, Groupe G-Belgian Rye Pale Ale',
+            u'Headlands Brewing Company, Hill 88-Double IPA',
+            u'Headlands Brewing Company, Point Bonita West Coast Lager',
+            u'Highwater Brewing, Berliner Reisse',
+            u'July 16 Tuesday Tapping:  Collection from Headlands Brewing Company',
+            u'Russian River Brewing Company, Blind Pig IPA',
+            u'Speakeasy, The Informant -Saison with Elder Flower',
+            u'Stillwater Artisanal Ales, Existent-Dark Saison',
+            u'Triple Rock, Lady Friend-Belgian Pale Ale',
+            u'Van Steenberge-Monks Cafe-Flemish Red',
+            u'Widmer Brewing Company, KGB-Imperial Stout'
     ]
 
     def setUp(self):
