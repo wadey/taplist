@@ -4,22 +4,21 @@ from responses import fake_response_from_file
 
 class CitybeerstoreSpiderTest(unittest.TestCase):
     expected = [
-            u'AleSmith Brewing Company, IPA',
-            u'Berryessa Brewing Company, Double Tap-Double IPA',
-            u'Birra Amiata, Marruca-Pale Honey Ale',
-            u'Drakes Brewing Company, Blue Bottle Stout',
-            u'Golden Road Brewing Company, Berlinerweisse-with lemon peel',
-            u'Headlands Brewing Company, Groupe G-Belgian Rye Pale Ale',
-            u'Headlands Brewing Company, Hill 88-Double IPA',
-            u'Headlands Brewing Company, Point Bonita West Coast Lager',
-            u'Highwater Brewing, Berliner Reisse',
-            u'July 16 Tuesday Tapping:  Collection from Headlands Brewing Company',
-            u'Russian River Brewing Company, Blind Pig IPA',
-            u'Speakeasy, The Informant -Saison with Elder Flower',
-            u'Stillwater Artisanal Ales, Existent-Dark Saison',
-            u'Triple Rock, Lady Friend-Belgian Pale Ale',
-            u'Van Steenberge-Monks Cafe-Flemish Red',
-            u'Widmer Brewing Company, KGB-Imperial Stout'
+            u'Alpine Beer Company - Nelson IPA-Golden Rye IPA',
+            u'Brouwerij Lupus - Wolf 7-Golden Belgian Ale',
+            u'Drakes Brewing Company - Unite Pale Ale',
+            u'Epic Brewing Company - Pumpkin Porter',
+            u"Evil Twin Brewing  - Apple Brandy Sour Lil' B-Sour-Sour Stout",
+            u'Golden Road Brewing  - 329 Lager',
+            u'Hangar 24 Craft Brewery - Betty IPA-American Style IPA',
+            u'Hangar 24 Craft Brewery - California Spring Beer-Hoppy Belgian blend',
+            u'Hangar 24 Craft Brewery - Chocolate Porter',
+            u'High Water Brewing  - No Boundary IPA',
+            u'Off Color Brewing - Troublesome Gose',
+            u'Russian River Brewing Company - Aud Blonde Ale',
+            u'Stone Brewing Company - 2011 Stone Imperial Russian Stout-IRS',
+            u'The Bruery - Hottenroth-Berliner Weisse',
+            u'The Lost Abbey - Agave Maria-Tequila barrel aged ale'
     ]
 
     def setUp(self):
