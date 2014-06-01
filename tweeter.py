@@ -23,6 +23,8 @@ while True:
     try:
         body = json.loads(job.body)
         msg = body['msg']
+        if len(msg) > 140:
+            msg = msg[:137] + "..."
 
         twitter.statuses.update(status=msg)
         job.delete()
